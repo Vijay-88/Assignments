@@ -1,0 +1,49 @@
+<html ng-app="taskmanager">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Task Manager</title>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link href="app.css" rel="stylesheet"></link>
+
+</head>
+<body ng-controller ="taskManagerController as vm">
+    <div class="container">
+
+        <h2> The Task Manager </h2>
+            <div class="task_list"> 
+                <h4> List of your task </h4>
+                <hr></hr>
+                <div ng-repeat="item in vm.taskList">
+                    <label>
+                        <input type="radio" ng-model = "vm.selectedTask" 
+                        value="{{item._id}}">
+                         {{ item.text }}
+                    </label>
+                </div>
+                 <hr></hr>
+            </div>
+
+        <div>
+            <form>
+                <div>
+                    <input class="form-control" type="text"
+                     placeholder="Put your task here" 
+                     ng-model="vm.task.text">
+                </div>
+                <div class="actions">
+                    <button class="buttons" type="submit" ng-click="vm.createTask()">Add</button>
+                    <button class="buttons" type="submit" ng-click="vm.deleteTask()">Delete</button>
+                    <button class="buttons" type="submit" ng-click="vm.editTask()">Edit</button>
+                <div>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>
